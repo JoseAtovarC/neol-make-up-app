@@ -10,7 +10,7 @@ function Footer() {
                     My github
                 </a>
                 <br />
-                made width 🤍
+                made with 🤍
             </p>
 
 

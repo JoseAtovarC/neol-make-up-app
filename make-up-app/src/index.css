@@ -1,0 +1,17 @@
+
+@font-face {
+  font-family: raleway;
+  src: url('./assets/fonts/Raleway-ExtraLight.ttf');
+}
+
+
+body {
+  margin: 0;
+  font-family: 'raleway', 'Helvetica Neue',
+    sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+ 
+}
+
+

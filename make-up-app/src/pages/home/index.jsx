@@ -1,0 +1,111 @@
+import React, { useState } from 'react'
+import Cards from '../../components/cards'
+import Navbar from '../../components/navbar'
+import Footer from '../../components/footer'
+import './home.css'
+
+export default function Home(props) {
+
+    const [productList, setProductList] = useState(props.productsList);
+    const [filterData, setFilerData] = useState("all")
+
+
+    const Filtered = () => {
+
+        if (filterData !== "all") {
+            setProductList(props.productsList.filter(v =>{
+                console.log(v.brand)
+                 return v.product_type === filterData || v.brand===filterData}))
+           
+
+        } else if (filterData === "all") {
+            setProductList(props.productsList)
+        }
+    };
+
+
+
+    return (
+
+        <>
+            <Navbar></Navbar>
+
+            <div className="filter-container">
+            <h3>brand</h3>
+                <div className="select-container">
+             
+                    <select name="filter" onChange={e => setFilerData(e.target.value)}>
+                    <option value="all">All</option>
+                        <option value="almay">Almay</option>
+                        <option value="alva">Alva</option>
+                        <option value="anna sui">Anna sui</option>
+                        <option value="annabelle">Annabelle</option>
+                        <option value="benefit">Benefit</option>
+                        <option value="boosh">Boosh</option>
+                        <option value="colourpop">colourpop</option>
+                        <option value="deciem">deciem</option>
+                        <option value="zorah biocosmetiques">zorah biocosmetiques</option>
+                        <option value="w3llpeople">w3llpeople</option>
+                        <option value="sally b's skin yummies">sally b's skin yummies</option>
+                        <option value="rejuva minerals"> rejuva minerals</option>
+                        <option value="marienatie">marienatie</option>
+                        <option value="lotus cosmetics usa">lotus cosmetics usa</option>
+                        <option value="c'est moi">c'est moi</option>
+                        <option value="nyx">nyx</option>
+                    </select>
+                    <button onClick={() => Filtered()}>search</button>
+                </div>
+
+                <h3>Product Type</h3>
+                <div className="select-container">
+
+            
+                    <select name="filter" onChange={e => setFilerData(e.target.value)}>
+                        <option value="all">All</option>
+                        <option value="blush">Blush</option>
+                        <option value="bronzer">Bronzer</option>
+                        <option value="eyeliner">Eyeliner</option>
+                        <option value="eyebrow">Eyebrown</option>
+                        <option value="eyeshadow">Eyeshadow</option>
+                        <option value="foundation">Foundation</option>
+                        <option value="lip_liner">lip liner</option>
+                        <option value="lipstick">lipstick</option>
+                        <option value="mascara">mascara</option>
+                        <option value="nail_polish">Nail Polish</option>
+                    </select>
+                    <button onClick={() => Filtered()}>search</button>
+                </div>
+
+
+            </div>
+            
+
+            <div className="cards">
+                {productList?.map(v => {
+
+                    return <Cards
+                        key={v.id}
+                        id={v.id}
+                        brand={v.brand}
+                        name={v.name}
+                        img={v.image_link}
+                        category={v.category}
+                        price={v.price}
+                        price_sign={v.price_sign}
+                    ></Cards>
+                }
+
+
+                )}
+
+            </div>
+
+            <Footer></Footer>
+        </>
+
+
+
+
+
+    )
+}

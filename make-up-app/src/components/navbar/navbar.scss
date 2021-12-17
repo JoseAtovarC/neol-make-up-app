@@ -1,0 +1,23 @@
+@import "../../variablesScss/variables.scss";
+
+
+.navbar{
+    display: flex;
+   justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 80px;
+    background-color:$blackColor;
+
+   
+   
+}
+
+.navbar a {
+    color: $whiteColor;
+    text-decoration: none;
+    font-size: 25px;
+    margin: 10px;
+    font-weight: bold;
+}
+

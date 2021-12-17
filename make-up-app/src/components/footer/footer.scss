@@ -1,0 +1,19 @@
+@import "../../variablesScss/variables.scss";
+
+
+.containerFooter{
+    margin-top: 20px;
+	width: 100%;
+	border-top: 1px solid black;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+    background-color:$blackColor;
+    height: 30vh;
+p{
+	color:$whiteColor;
+	margin: 30px;
+}
+   
+   
+}

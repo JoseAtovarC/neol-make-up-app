@@ -1,0 +1,22 @@
+.containerFooter {
+  margin-top: 20px;
+  width: 100%;
+  border-top: 1px solid black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-color: #181818;
+  height: 30vh;
+}
+
+.containerFooter p {
+  color: #e8e8e8;
+  margin: 30px;
+}
+/*# sourceMappingURL=footer.css.map */

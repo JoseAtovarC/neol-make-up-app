@@ -10,6 +10,13 @@ function App() {
   const [brandName, setBrandName] = useState("annabelle");
   const { data, setData} = useFetch(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${brandName}`);
 
+
+  const HandleChange= async()=>{
+    const resp= await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${brandName}`);
+    const datachange = await resp.json();
+    setData(datachange);
+    console.log(data)
+  }
  
   return (
     <>
@@ -18,7 +25,7 @@ function App() {
           < Routes>
             <Route path="details/:id" element={<Details />} />
             <Route path="/" element={<Home productsList={data} 
-         
+            HandleChange={HandleChange}
             setBrandName={setBrandName}/>}>
 
             </Route>

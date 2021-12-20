@@ -55,7 +55,7 @@ export default function Home(props) {
                         <option value="c'est moi">c'est moi</option>
                         <option value="nyx">nyx</option>
                     </select>
-                    <button onClick={() => Filtered()}>search</button>
+                    <button onClick={() => props.HandleChange()}>search</button>
                 </div>
 
                 <h3>Product Type</h3>
@@ -85,9 +85,9 @@ export default function Home(props) {
             <div className="cards">
                 {productList?.map(v => {
 
-                    return  <Link to={`/details/${v.id}`} state={v}>
+                    return  <Link  key={v.id} to={`/details/${v.id}`} state={v}>
                     <Cards
-                        key={v.id}
+                       
                         brand={v.brand}
                         name={v.name}
                         img={v.image_link}
@@ -97,8 +97,6 @@ export default function Home(props) {
                     ></Cards>
                     </Link>
                 }
-
-
                 )}
 
             </div>

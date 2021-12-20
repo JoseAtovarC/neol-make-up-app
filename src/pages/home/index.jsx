@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
+import {  Link } from 'react-router-dom';
 import Cards from '../../components/cards'
 import Navbar from '../../components/navbar'
 import Footer from '../../components/footer'
 import './home.css'
 
 export default function Home(props) {
+
 
     const [productList, setProductList] = useState(props.productsList);
     const [filterData, setFilerData] = useState("all")
@@ -14,7 +16,7 @@ export default function Home(props) {
 
         if (filterData !== "all") {
             setProductList(props.productsList.filter(v =>{
-                console.log(v.brand)
+                console.log(v)
                  return v.product_type === filterData || v.brand===filterData}))
            
 
@@ -34,7 +36,7 @@ export default function Home(props) {
             <h3>brand</h3>
                 <div className="select-container">
              
-                    <select name="filter" onChange={e => setFilerData(e.target.value)}>
+                    <select name="filter" onChange={e => props.setBrandName(e.target.value)}>
                     <option value="all">All</option>
                         <option value="almay">Almay</option>
                         <option value="alva">Alva</option>
@@ -83,9 +85,9 @@ export default function Home(props) {
             <div className="cards">
                 {productList?.map(v => {
 
-                    return <Cards
+                    return  <Link to={`/details/${v.id}`} state={v}>
+                    <Cards
                         key={v.id}
-                        id={v.id}
                         brand={v.brand}
                         name={v.name}
                         img={v.image_link}
@@ -93,6 +95,7 @@ export default function Home(props) {
                         price={v.price}
                         price_sign={v.price_sign}
                     ></Cards>
+                    </Link>
                 }
 
 

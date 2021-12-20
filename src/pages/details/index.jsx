@@ -2,38 +2,34 @@ import React from 'react'
 import { useFetchDetails } from '../../hooks'
 import Navbar from '../../components/navbar'
 import './details.css'
-import { useParams } from 'react-router'
+import { useLocation } from 'react-router-dom'
 
 
 function Details() {
-
-    let paramsId = useParams();
-
-    const { data } = useFetchDetails('http://makeup-api.herokuapp.com/api/v1/products.json?searchmakeupproducts', parseInt(paramsId.id));
-
-
+    const location = useLocation();
+	console.log(location.state);
 
     return (
         <>
-            {data !== null ?
-                <>
+           
+                
                     <Navbar></Navbar>
                     <div className="details-container">
-                        <h1>{data[0].name}
+                        <h1>{location.state.name}
 
                         </h1>
                     </div>
 
                     <div >
                         <div className="container">
-                            <img src={data[0].image_link} alt="" />
+                            <img src={location.state.image_link} alt="" />
 
 
-                            <p>Brand: <span>{data[0].brand}</span></p>
-                            <p>Price: <span>${data[0].price}</span></p>
-                            <p>Description: <span> {data[0].description}</span>  </p>
+                            <p>Brand: <span>{location.state.brand}</span></p>
+                            <p>Price: <span>${location.state.price}</span></p>
+                            <p>Description: <span> {location.state.description}</span>  </p>
                             <p>Tags:</p>
-                            {data[0].tag_list.map(v => {
+                            {location.state.tag_list.map(v => {
                                 return <ul>
                                     <li>{v}</li>
                                 </ul>
@@ -43,15 +39,8 @@ function Details() {
 
                     </div>
 
-                </>
-                : <>
-                    <Navbar></Navbar>
-                    <div className="spinner">
-                        <span className="spinner-inner-1"></span>
-                        <span className="spinner-inner-2"></span>
-                        <span className="spinner-inner-3"></span>
-                    </div>
-                </>}
+                
+             
 
         </>
     )

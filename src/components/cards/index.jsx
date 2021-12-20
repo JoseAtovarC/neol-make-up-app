@@ -1,11 +1,11 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+
 import './card.css'
 
 function Cards(props) {
     return (
         <div className="container">
-            <Link to={`/details/${props.id}`}>
+
                 <div>
 
                     <img src={props?.img} alt="img of a product" />
@@ -23,7 +23,7 @@ function Cards(props) {
                         {props.price} {props.price_sign}
                     </p>
                 </div>
-            </Link>
+          
         </div>
     )
 }

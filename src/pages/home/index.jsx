@@ -8,6 +8,7 @@ import './home.css'
 export default function Home(props) {
 
     const [productList, setProductList] = useState(props.productsList);
+    const [productType, setproductType] = useState()
     const [loading] = useState('')
     const [filterData, setFilerData] = useState('')
 
@@ -15,8 +16,8 @@ export default function Home(props) {
 
 const Filtered=()=>{
 
-      if (filterData !== "all" ) {
-            setProductList(productList.filter(v =>{
+      if (filterData !== "all" && productType !== undefined ) {
+            setProductList(productType.filter(v =>{
                
                  return v.product_type === filterData}))
            
@@ -30,7 +31,9 @@ const Filtered=()=>{
 
         const resp= await fetch(`http://makeup-api.herokuapp.com/api/v1/products.json?brand=${filterData}`);
         const data = await resp.json();
+        setproductType(data)
         setProductList(data);
+       
        
     };
 
